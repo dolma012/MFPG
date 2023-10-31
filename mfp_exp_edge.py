@@ -7,12 +7,13 @@ import argparse
 
 
 
-def exp_mfp_edges(mfp_nodes, energy_matrix,idx_matrix, mfp_edges, source_traces, destination_traces):
+def exp_mfp_edges(mfp_nodes, energy_matrix,idx_matrix, mfp_edges, source_traces, destination_traces, traces):
     '''
     Purpose: Determine MFP-edges based on proposed definition
     Return: update matrix, traces, mfp_edges, and mfp_nodes corresponding to proposed definition of MFP-edges
     '''
     # get union of two matrix rows and check if the another row is a subset of the union 
+    
     nodes = {node:i for i, node in enumerate(mfp_nodes)}
     edge_dict = collections.defaultdict(list)
     for edges in mfp_edges:
@@ -45,6 +46,7 @@ def exp_mfp_edges(mfp_nodes, energy_matrix,idx_matrix, mfp_edges, source_traces,
             if i in mfp_edges[num_edges]:
                 mfp_edges.remove(mfp_edges[num_edges])
             num_edges-=1
-
-
-    return energy_matrix, idx_matrix, mfp_nodes, mfp_edges, source_traces, destination_traces
+    source_traces_dict =  {}
+    for i in source_traces:
+        source_traces_dict[i] = traces[i]
+    return energy_matrix, idx_matrix, mfp_nodes, mfp_edges, source_traces_dict, destination_traces

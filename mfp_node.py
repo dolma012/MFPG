@@ -50,7 +50,7 @@ def set_energy_matrix(traces, candidate_mfp, matrix_energy, edge_graph, matrix, 
                 'P4': [5,6,6],
                 'P5': [5,7,7]}
     else:
-        energy= {'P1':[2,2],
+        energy= {'P1':[2,9],
                 'P2': [1,1],
                 'P3': [3,2,4,3],
                 'P4': [7,9,2],
@@ -81,7 +81,6 @@ def set_energy_matrix(traces, candidate_mfp, matrix_energy, edge_graph, matrix, 
         
         # curr_array[row_indices] = np.array(energy[j])
         matrix_energy[i] = curr_array
-        
     return matrix_energy
 
 

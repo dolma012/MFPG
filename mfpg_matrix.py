@@ -97,14 +97,13 @@ if __name__ == "__main__":
         
     g = graph(graph_elements)
     vertices = g.findvertices()
-    source_node = "n10"
+    source_node = "n1"
     destination_node = "n5"
     mfp_vertices, e_matrix, i_matrix, edge_map, destination_traces, source_traces = mfp_node.find_mfp_node(traces, args.graph, args.beta,source_node,destination_node, g.findedges())
     mfp_edges = mfp_edge.find_mfp_edges(mfp_vertices, i_matrix) #edge_list, matrix, mfp_nodes
-    e_matrix, idx_matrix, mfp_nodes, mfp_edges, source_traces, destination_traces = mfp_exp_edge.exp_mfp_edges(mfp_vertices, e_matrix, i_matrix, mfp_edges,source_traces, destination_traces)
-   
+    e_matrix, idx_matrix, mfp_nodes, mfp_edges, source_traces, destination_traces = mfp_exp_edge.exp_mfp_edges(mfp_vertices, e_matrix, i_matrix, mfp_edges,source_traces, destination_traces, traces)
     mfp_edge_cost, mfp_nodes,e_matrix = mfp_edge.mfp_edge_cost(e_matrix, mfp_nodes, mfp_edges, edge_map)
-    mfp_shortest_path, mfp_shortest_p_cost = shortest_dist.compute_shortest_path(mfp_edge_cost,mfp_nodes,e_matrix, edge_map,destination_traces,source_traces )
+    mfp_shortest_path, mfp_shortest_p_cost = shortest_dist.compute_shortest_path(mfp_edge_cost,mfp_nodes,e_matrix, edge_map,destination_traces,source_traces, source_node)
     
     # print(mfp_shortest_path, mfp_shortest_p_cost)
     # print("CURRENT MFP EDGE COST:", mfp_edge_cost)

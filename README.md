@@ -7,6 +7,9 @@ I am currently working on developing models for estimating energy consumption in
 
 Please install all the dependencies/libraries and then run the commands below:
 
+
+
+
 ```sh
 command: pip install numpy==1.26.0
 command: python mfpg_matrix.py --graph 1
