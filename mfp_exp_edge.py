@@ -1,9 +1,6 @@
 import numpy as np
-import math
-import random
-import sys
 import collections
-import argparse
+
 
 
 
@@ -12,8 +9,9 @@ def exp_mfp_edges(mfp_nodes, energy_matrix,idx_matrix, mfp_edges, source_traces,
     Purpose: Determine MFP-edges based on proposed definition
     Return: update matrix, traces, mfp_edges, and mfp_nodes corresponding to proposed definition of MFP-edges
     '''
-    # get union of two matrix rows and check if the another row is a subset of the union 
     
+    
+    # get union of two matrix rows and check if the another row is a subset of the union 
     nodes = {node:i for i, node in enumerate(mfp_nodes)}
     edge_dict = collections.defaultdict(list)
     for edges in mfp_edges:

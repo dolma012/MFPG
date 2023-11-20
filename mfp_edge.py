@@ -7,12 +7,14 @@ import sys
 def find_mfp_edges(mfp_nodes,idx_matrix):
     nodes = [node for node in mfp_nodes]
     edges=[]
+    k = mfp_nodes.keys()
+    k= list(k)
     for i in range(len(mfp_nodes)):
         for j in range(i+1,len(mfp_nodes)):
             idx1= set(np.where(idx_matrix[i] !=0)[0].tolist())
             idx2 = set(np.where(idx_matrix[j] !=0)[0].tolist())
             intersection_col = list(idx1.intersection(idx2))
-            if len(intersection_col) >0:                    
+            if len(intersection_col) >0:
                 vals_1 = idx_matrix[i, np.array(list(idx1))].tolist()
                 vals_2 = idx_matrix[j, np.array(list(idx2))].tolist()
                 if idx_matrix[i, max(intersection_col)] == max(vals_1):
@@ -62,7 +64,11 @@ def mfp_edge_cost(e_matrix, mfp_nodes, mfp_edges, edge_graph):
         # back tracking to remove unecessary edge cost
         if len(intersect_set) >0:
             # sum_shared = sum(list(e_matrix[idx1,list(intersect_set)] + e_matrix[idx2,list(intersect_set)])) / (2*(len(intersect_set)))
-            sum_shared =  sum((e_matrix[idx2,[i]] + e_matrix[idx1, [i]])/2 for i in intersect_set)
+            sum_shared = 0
+            for i in intersect_set:
+                sum_shared += sum(e_matrix[idx2,[i]] + e_matrix[idx1, [i]])
+            
+            sum_shared = sum_shared//(len(intersect_set)*2) 
             mfp_edge_cost[edge] = np.sum(e_matrix[idx2]) - sum_shared
 
     return mfp_edge_cost, list(mfp_nodes),final_matrix

@@ -59,13 +59,11 @@ def set_energy_matrix(traces, candidate_mfp, matrix_energy, edge_graph, matrix, 
                 'P7': [1,1,1],
                 'P8': [1,1],
                 'P9': [1,1],
-                # 'P10': [1,-3,-2,1,1,1]
+                # 'P10': [1,-3,-3,2,2,-2]
+                #  'P10': [1,-3]
                 }
-    
-    
     #iterates through all the traces(candidate mfp) and extracts indices where idx_matrix (row) !=0
     # the indices are then used to set the energy cost in matrix_energy (row)
-    
     
     for i, j in enumerate(candidate_mfp):
         trace= traces[j]
@@ -78,14 +76,9 @@ def set_energy_matrix(traces, candidate_mfp, matrix_energy, edge_graph, matrix, 
         curr_array = np.array(matrix_energy[i])
         curr_array[cols] = np.array(energy[j])
         # curr_array = np.array(matrix_energy[i])
-        
         # curr_array[row_indices] = np.array(energy[j])
         matrix_energy[i] = curr_array
     return matrix_energy
-
-
-
-
         
 
 def find_mfp_node(traces,graph_type,beta,source_node, destination_node,og_graph_edges):
