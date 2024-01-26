@@ -5,7 +5,7 @@ Matrix based approach to implement Maximal Frequented Path Graph given a spatial
 
 ##Data Processing Overview
 
-![alt text](https://github.com/dolma012/MFPG/blob/main/model.png](https://github.com/dolma012/MFPG/blob/main/model.png))
+![alt text](https://github.com/dolma012/MFPG/blob/main/model.png?raw=true)
 
 
 
