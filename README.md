@@ -1,5 +1,5 @@
 # MFPG
-Matrix based approach to implement Maximal Frequented Path Graph given a spatial graph and on board dianostics data.
+Matrix based approach to implement Maximal Frequented Path Graph given a spatial graph and onboard dianostics (OBD) data.
 
 # Onboard Diagnostics Data
 ## Data Pipline and Processing Overview
